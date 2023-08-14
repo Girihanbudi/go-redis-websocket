@@ -1,0 +1,18 @@
+version: "3.7"
+
+# create local service environment
+services:
+  grw-redis:
+    container_name: "grw-redis"
+    image: "redis:7.2-rc1-alpine3.17"
+    restart: "unless-stopped"
+    command: "redis-server --requirepass 18be2c8f80d066f352e778be5a2d8691"
+    ports:
+      - "6379:6379"
+    networks:
+      - "grw_network"
+
+networks:
+  grw_network:
+    name: "grw_network"
+    driver: "bridge"
